@@ -1,0 +1,61 @@
+#create database
+create database database_name;
+
+#select the values from table_name 
+select * from table_name;
+
+#select only perticular column from table
+select column_name from table_name;
+
+#select multiple column from table
+select column_name1, column_name2 from table_name;
+
+#Selecting Two or More Columns From One Table and Filtering Using Numeric Comparison in WHERE 
+
+Comparison Operator	        Description
+
+=	                     Is equal to
+>	                     Is greater than
+
+<	                     Is less than
+>=	                     Is greater than or equal to
+<=	                     Is less than or equal to
+<>	                     Is not equal to
+
+
+#Using the = (Is equal to) Operator
+select  column_name1 from table_name WHERE column_name1 = 'name';
+
+#Using the > (Is greater than) Operator
+select column_name1, column_name2 from table_name WHERE salary > 3000;
+
+#Using the < (Is less than) Operator
+select column_name1, column_name2 from table_name WHERE salary < 3000;
+
+#Using the >= (Is greater than or equal to) Operator
+select column_name1, column_name2 from table_name WHERE salary >= 3000;
+
+#Using the <= (Is less than or equal to) Operator
+select column_name1, column_name2 from table_name WHERE salary <= 3000;
+
+#Using the <> (Is not equal to) Operator
+select column_name1, column_name2 from table_name WHERE salary < 3000;
+
+
+#Selecting Two Columns and Ordering by One Column (accending order)
+
+select column_name from table_name order by column_name;
+
+#Selecting Two Columns and Ordering by One Column (descending order)
+
+selct column_name from table_name order by column_name DESC;
+
+
+#Selecting Two Columns From One Table and Ordering Descendingly by Two Columns
+
+select column_name1, column_name2 from table_name order by column_name1 DESC, column_name2 ASC;
+
+#Selecting Two Columns With a Complex Logical Condition in WHERE
+
+select column_name1, column_name2, salary from table_name WHERE salary > 5000 or salary < 3000;
+
