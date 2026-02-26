@@ -1,4 +1,5 @@
 import random
+from openpyxl import Workbook
 
 def addItem():
     global total_bill
@@ -37,6 +38,14 @@ def delete_item():
 
 def updateItem():
     global total_bill
+    global customer_name
+
+    new_name = input("Enter new customer name: ")
+
+    if new_name != "":
+        customer_name = new_name
+        print("Customer name updated Done ✔")
+
     update_item = input("Enter the update item name: ")
 
     for item in products:
@@ -44,6 +53,10 @@ def updateItem():
             
             previous_total = item["Total Amount"]
 
+            new_name = input("Enter new item name: ")
+            if new_name != "":
+                item["Item name"] = new_name
+            
             while True:
                 new_price = input("Enter new price: ")
 
@@ -73,7 +86,7 @@ def updateItem():
             total_bill += item["Total Amount"] - previous_total
 
             print("Item updated successfully")
-            return
+            break
 
     print("Enter a valid Item Name")
 
@@ -85,6 +98,26 @@ def searchItem():
         display()
     else:
         print("Invoice not found")
+
+def save_excel():
+    wb = Workbook()
+    ws = wb.active
+    ws.title = "Invoice"
+
+
+    ws.append(["Customer name", customer_name])
+    ws.append([])
+    ws.append(["Item name", "Price", "Quantity", "Total Amount"])
+
+    for item in products:
+        ws.append([item["Item name"], item["Price"], item["Quantity"], item["Total Amount"]])
+
+    ws.append([])
+    ws.append(["Total Amount", "", "", total_bill])
+
+    filename = "invoice.xlsx"
+    wb.save(filename)
+    print(f"Invoice saved to {filename}")
 
 def display():
 
@@ -142,8 +175,9 @@ while True:
     print("2. Remove Items")
     print("3. Update Items")
     print("4. View Details")
-    print("5. Search the Item")
-    print("6. Exit")
+    print("5. Search the Item using invoice No.")
+    print("6. Save into Excel")
+    print("7. Exit")
 
     choice = input("Enter your choice: ")
 
@@ -158,6 +192,8 @@ while True:
     elif choice == "5":
         searchItem()
     elif choice == "6":
+        save_excel()
+    elif choice == "7":
         break
     else:
         print("Invalid choice")
