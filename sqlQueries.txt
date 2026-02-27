@@ -1,6 +1,25 @@
 #create database
 create database database_name;
 
+#create table in database
+
+CREATE TABLE table_name(
+
+id INT AUTO_INCREMENT PRIMERY KEY,
+name varchar(50),
+email varchar(50),
+mobileno varchar(10)
+);
+
+#Insert the data into table
+
+INSERT INTO table_name (column_name, column_name1)    
+VALUES (values, values1);
+
+#Update the data into table
+
+UPDATE INTO table_name set column_name = 'values' WHERE id = 1;
+
 #select the values from table_name 
 select * from table_name;
 
